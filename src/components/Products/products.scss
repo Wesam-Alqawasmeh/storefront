@@ -1,0 +1,22 @@
+.card {
+  margin: auto;
+  background-color: #212529 !important;
+  color: white !important;
+
+  .cardImg {
+    object-fit: cover;
+    height: auto;
+  }
+}
+
+.activeCategory {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+
+  h2 {
+    font-size: 50px;
+  }
+}
