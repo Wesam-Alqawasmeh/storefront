@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Categories from "./components/Categories/Categories";
 import Products from "./components/Products/Products";
+import SimpleCart from "./components/SimpleCart/SimpleCart";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header />
       <Categories />
       <Products />
+      <SimpleCart />
       <Footer />
     </>
   );

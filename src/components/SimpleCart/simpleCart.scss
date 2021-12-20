@@ -1,0 +1,25 @@
+#cart-container {
+  background-color: #212529;
+  color: white;
+  width: fit-content;
+  position: fixed;
+  top: 6rem;
+  right: 1rem;
+  padding: 5px;
+  border-radius: 7px;
+
+  .items {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+
+  .delete {
+    background-color: red;
+    padding: 0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
