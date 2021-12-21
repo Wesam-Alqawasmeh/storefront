@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
@@ -6,9 +6,14 @@ import { connect } from "react-redux";
 
 import { updateActiveCategory } from "../../store/store";
 
+import { getCategories } from "../../store/actions";
+
 import "./categories.scss";
 
 function Categories(props) {
+  useEffect(() => {
+    props.getCategories("https://wesam-storefront.herokuapp.com/categories");
+  }, []);
   return (
     <div className="categories">
       <h2>Browse our Categories</h2>
@@ -30,6 +35,6 @@ const mapStateToProps = (state) => ({
   myStore: state.myStore,
 });
 
-const mapDispatchToProps = { updateActiveCategory };
+const mapDispatchToProps = { updateActiveCategory, getCategories };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
