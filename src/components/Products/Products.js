@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -14,10 +14,14 @@ import "./products.scss";
 
 import { increment } from "../../store/cart";
 import { decreaseInStock } from "../../store/products";
+import { getProducts, updateProducts } from "../../store/actions";
 
 import { v4 as uuid } from "uuid";
 
 function Products(props) {
+  useEffect(() => {
+    props.getProducts("https://wesam-storefront.herokuapp.com/products");
+  }, []);
   return (
     <div>
       {props.myStore.activeCategory && (
@@ -34,7 +38,7 @@ function Products(props) {
             })
             .map((item, index) => {
               return (
-                <Col>
+                <Col key={index}>
                   <Card sx={{ maxWidth: 345 }} className="card" key={index}>
                     <CardMedia
                       component="img"
@@ -66,8 +70,20 @@ function Products(props) {
                               price: item.price,
                             });
                           }
-
                           props.decreaseInStock(item);
+                          // let data = {
+                          //   name: item.name,
+                          //   description: item.description,
+                          //   category: item.category,
+                          //   price: item.price,
+                          //   inStock: item.inStock > 0 ? item.inStock - 1 : 0,
+                          //   img: item.img,
+                          // };
+
+                          // props.updateProducts(
+                          //   `https://wesam-storefront.herokuapp.com/products/${item.id}`,
+                          //   data
+                          // );
                         }}
                       >
                         Add To Cart
@@ -89,6 +105,11 @@ const mapStateToProps = (state) => ({
   products: state.products,
 });
 
-const mapDispatchToProps = { increment, decreaseInStock };
+const mapDispatchToProps = {
+  increment,
+  decreaseInStock,
+  updateProducts,
+  getProducts,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
