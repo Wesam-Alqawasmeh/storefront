@@ -17,7 +17,7 @@ function SimpleCart(props) {
             return (
               <>
                 {item && (
-                  <div className="items" key={index}>
+                  <div className="items" key={item.id}>
                     <span style={{ width: "fit-content" }}>{item.name}</span>
                     <span
                       className="delete"
